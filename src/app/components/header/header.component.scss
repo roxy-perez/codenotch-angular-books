@@ -1,0 +1,33 @@
+@import '../../../sass/styles';
+
+nav {
+  background-color: $accent-color;
+  font-weight: weight(bold);
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+
+  li {
+    a {
+      @include btn($background-color: $primary-color,
+        $color: $text-color,
+        $bold: 'true');
+
+      &:hover {
+        @include btn($text-color, whitesmoke, 'false');
+        box-shadow: $box-shadow;
+      }
+    }
+  }
+}
+
+header {
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
