@@ -1,0 +1,36 @@
+@import '../../../sass/styles';
+
+footer {
+  background: $accent-color;
+  height: 12em;
+  text-align: center;
+  color: $text-color;
+  border-radius: .5em;
+}
+
+.social-icons {
+  @include container($max-width: 10em);
+  display: flex;
+  justify-content: space-between;
+  gap: .5em;
+
+  .social-icon {
+    width: 25%;
+    height: 10%;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+}
+
+.copyright {
+  color: $text-color;
+
+  &::before {
+    content: '';
+    display: block;
+    height: 1px;
+    background: rgba($text-color, .15);
+    width: 35%;
+    margin: 2em auto;
+  }
+}

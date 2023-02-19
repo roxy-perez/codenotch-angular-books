@@ -1,23 +1,18 @@
 @import '../../../sass/styles';
 
-nav {
-  background-color: $accent-color;
-  font-weight: weight(bold);
-}
-
 ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: .7em;
 
   li {
     a {
-      @include btn($background-color: $primary-color,
+      @include btn($background-color: $secondary-color,
         $color: $text-color,
         $bold: 'true');
 
       &:hover {
-        @include btn($text-color, whitesmoke, 'false');
+        @include btn($accent-alternative, $secondary-color, 'false');
         box-shadow: $box-shadow;
       }
     }
@@ -28,6 +23,13 @@ header {
   nav {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
+    padding-right: 2em;
+    padding-left: 2em;
+    border-radius: 0.5em;
+    position: sticky;
+
+    background-color: $primary-color;
+    font-weight: weight(bold);
   }
 }

@@ -1,0 +1,36 @@
+body {
+  color: $text-color;
+  font-family: $serif;
+  font-size: .875rem;
+  line-height: 1.6;
+  background: $secondary-color;
+  overflow-x: hidden;
+
+  @media (min-width: 50em) {
+    font-size: 1.125rem;
+  }
+}
+
+img {
+  width: 1.3em;
+  height: 1em;
+}
+
+h1,
+h2 {
+  color: $text-color;
+  line-height: 1;
+  font-size: 3.125rem;
+}
+
+.container{
+  background-image: url(../assets/img/books.jpg);
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  margin: 4em;
+  width: 80%;
+  padding: 2em;
+  position: absolute;
+  box-shadow: 0 0 5rem 1rem rgba($color: #000000, $alpha: 0.1)
+}
