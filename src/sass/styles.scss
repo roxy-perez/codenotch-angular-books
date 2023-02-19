@@ -1,44 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import '_variables';
 @import '_resets';
-
-@function weight($weight-name) {
-  @return map-get($font-weights, $weight-name);
-}
-
-@mixin btn($background-color, $color, $bold) {
-  background-color: $background-color;
-  color: $color;
-  border-radius: 50px;
-  padding: 1rem 2rem;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  @if($bold=='true') {
-    font-weight: weight(bold);
-  }
-}
-
-body {
-  height: 100vh;
-  background: $primary-color;
-  font-family: $serif;
-  color: $text-color;
-}
-
-.btn{
-  &.btn-cta{
-    @include btn(red, white, 'true');
-    &:hover{
-      @include btn($accent-color, $text-color,'true');
-      box-shadow: $box-shadow;
-    }
-  }
-
-  &:hover{
-    @include btn($text-color, $accent-color,'true');
-    box-shadow: $box-shadow;
-  }
-}
+@import '_base';
+@import '_mixins';
