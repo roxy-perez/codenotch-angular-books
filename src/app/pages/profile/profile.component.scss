@@ -1,0 +1,119 @@
+/* Import Google font - Poppins */
+@import '../../../sass/styles';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  @include flexCenter(row);
+  background: $text-color;
+}
+
+.vl {
+  border-left: 4px solid $primary-color;
+  border-radius: 5px;
+  height: 40%;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.wrapper {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1em auto;
+  padding: 2em 0;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+  background: $secondary-color;
+  border-radius: 12px;
+
+  &.edition {
+    position: absolute;
+    left: 120%;
+    bottom: -86%;
+    padding: 20px 30px 120px;
+    height: 100%;
+    border-radius: 12px;
+  }
+
+  &.readonly {
+    position: absolute;
+    left: 50%;
+    bottom: -86%;
+    padding: 20px 30px 120px;
+    height: 100%;
+    border-radius: 12px;
+  }
+}
+
+.image {
+  display: flex;
+  .img {
+    width: 30%;
+    margin: 0 auto;
+    height: fit-content;
+    border-radius: 50%;
+  }
+}
+
+.wrapper {
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    gap: 1em;
+    background: $secondary-color;
+    margin-bottom: 2em;
+  }
+
+  header {
+    font-size: 30px;
+    text-align: center;
+    color: $text-color;
+    font-weight: weight(bold);
+    opacity: 0.6;
+    padding: .5em;
+    cursor: pointer;
+  }
+}
+
+form input {
+  height: 30px;
+  width: 80%;
+  max-width: 470px;
+  outline: none;
+  border: none;
+  padding: 0 15px;
+  font-size: 16px;
+  font-weight: weight(regular);
+  text-align: left;
+  color: $secondary-color;
+  border-radius: 8px;
+  background: $text-color;
+
+  &.read {
+    background-color: $tertiary-color;
+    color: $text-color;
+  }
+}
+
+form input[type="submit"] {
+  @include btn($accent-alternative, $tertiary-color, 'true');
+  margin: 1em 1em;
+  height: 100%;
+  width: 50%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $accent-color;
+    box-shadow: $box-shadow;
+    color: $text-color;
+  }
+}

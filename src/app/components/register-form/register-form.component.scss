@@ -1,7 +1,7 @@
 @import '../../../sass/styles';
 
 h3 {
-  color: $accent-alternative;
+  color: $text-color;
   font-size: 150%;
   font-weight: weight(bold);
   text-align: center;
@@ -11,8 +11,8 @@ h3 {
   margin: 1em auto;
   padding: 1em 2em;
   height: 20em;
-  background: $tertiary-color;
-  border-radius: 4px;
+  background: $secondary-color;
+  border-radius: 12px;
   box-shadow: 0 0 10px $accent-alternative;
   width: 60%;
   display: block;
@@ -20,19 +20,21 @@ h3 {
 
 .form-register {
   margin: 0 auto;
-  background: $tertiary-color;
-  border-radius: 0.5em;
+  background: $secondary-color;
   display: flex;
   flex-wrap: wrap;
 
-
   .image {
-    display: flex;
+    @include flexCenter(column);
+    width: 45%;
+    max-width: 470px;
 
     img {
-      width: 50%;
-      margin: .5em auto;
-      height: fit-content;
+      width: 60%;
+      height: 100%;
+      margin: .1em auto;
+      border-radius: 14px;
+      box-shadow: $box-shadow-light;
     }
   }
 
@@ -44,7 +46,7 @@ h3 {
       background: transparent;
       width: 80%;
       border: none;
-      border-bottom: 2px solid $secondary-color;
+      border-bottom: 2px solid $accent-alternative;
       padding: 1em;
       color: $text-color;
     }
@@ -56,19 +58,20 @@ h3 {
 
   list-style: none;
   border: none;
-  background: $accent-color;
+  background: $accent-alternative;
   padding: .7em 1.5em;
   border-radius: 50px;
   cursor: pointer;
-  color: $text-color;
+  color: $secondary-color;
   text-align: center;
+  font-weight: weight(bold);
   height: 100%;
 
   &:hover {
-    background: $primary-color;
+    background: $accent-color;
     box-shadow: $box-shadow;
+    color: $text-color;
   }
-
 }
 
 ::-webkit-input-placeholder {
