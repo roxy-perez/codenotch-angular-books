@@ -3,11 +3,12 @@
     <header>Datos</header>
     <form action="#">
       <div class="image">
-        <img  src="../../../assets/img/AvatarMaker.png" class="img">
+        <img src="../../../assets/img/AvatarMaker.png" class="img">
       </div>
-      <input class="read" type="text" placeholder="Roxy S." readonly  />
-      <input class="read" type="text" placeholder="Pérez" readonly  />
-      <input class="read" type="text" placeholder="necropsia32@gmail.com" readonly  />
+      <input class="read" type="text" placeholder="Name" readonly value="{{ user.name }}" />
+      <input class="read" type="text" placeholder="Surname" readonly value="{{ user.surname }}" />
+      <input class="read" type="text" placeholder="Email" readonly value="{{ user.email }}"/>
+      <input class="read" type="text" placeholder="url" readonly value="{{ user.url }}"/>
     </form>
   </div>
 
@@ -15,11 +16,11 @@
 
   <div class="edition">
     <header>Edición</header>
-    <form action="#">
-      <input type="text" placeholder="Nombre" required />
-      <input type="text" placeholder="Apellidos" required />
-      <input type="text" placeholder="Email" required />
-      <input type="text" placeholder="/images/profile.jpg" required  />
+    <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+      <input type="text" placeholder="Nombre" ngModel required />
+      <input type="text" placeholder="Apellidos" ngModel  required />
+      <input type="text" placeholder="Email" ngModel required />
+      <input type="text" placeholder="/images/profile.jpg" ngModel required />
       <input type="submit" value="Modificar" />
     </form>
   </div>
