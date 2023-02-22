@@ -7,8 +7,8 @@
       </div>
       <input class="read" type="text" placeholder="Name" readonly value="{{ user.name }}" />
       <input class="read" type="text" placeholder="Surname" readonly value="{{ user.surname }}" />
-      <input class="read" type="text" placeholder="Email" readonly value="{{ user.email }}"/>
-      <input class="read" type="text" placeholder="url" readonly value="{{ user.url }}"/>
+      <input class="read" type="text" placeholder="Email" readonly value="{{ user.email }}" />
+      <input class="read" type="text" placeholder="url" readonly value="{{ user.url }}" />
     </form>
   </div>
 
@@ -16,11 +16,11 @@
 
   <div class="edition">
     <header>Edición</header>
-    <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
-      <input type="text" placeholder="Nombre" ngModel required />
-      <input type="text" placeholder="Apellidos" ngModel  required />
-      <input type="text" placeholder="Email" ngModel required />
-      <input type="text" placeholder="/images/profile.jpg" ngModel required />
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+      <input type="text" name="name" placeholder="Nombre" ngModel required />
+      <input type="text" name="surname" placeholder="Apellidos" ngModel required />
+      <input type="text" name="email" placeholder="Email" ngModel required />
+      <input type="text" name="url" placeholder="/images/profile.jpg" ngModel required />
       <input type="submit" value="Modificar" />
     </form>
   </div>

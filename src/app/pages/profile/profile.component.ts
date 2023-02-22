@@ -18,12 +18,14 @@ export class ProfileComponent {
     "/images/user.jpg"
   );
 
-  newUser = {} as User;
+  onSubmit(data) {
+    this.user.name = data.name;
+    this.user.surname = data.surname;
+    this.user.email = data.email;
+    this.user.url = data.url;
 
-  @ViewChild('itemForm', { static: false }) form!: NgForm;
-
-  onSubmit(form: NgForm) {
-    console.log(JSON.stringify(form.value));
+    console.log(data.name);
   }
+
 
 }
