@@ -352,7 +352,7 @@ h2 {
 }
 
 h3 {
-  color: rgb(242, 192, 99);
+  color: #F2F2F2;
   font-size: 150%;
   font-weight: 700;
   text-align: center;
@@ -362,8 +362,8 @@ h3 {
   margin: 1em auto;
   padding: 1em 2em;
   height: 20em;
-  background: rgb(3, 89, 165);
-  border-radius: 4px;
+  background: rgb(2, 39, 114);
+  border-radius: 12px;
   box-shadow: 0 0 10px rgb(242, 192, 99);
   width: 60%;
   display: block;
@@ -371,20 +371,24 @@ h3 {
 
 .form-register {
   margin: 0 auto;
-  background: rgb(3, 89, 165);
-  border-radius: 0.5em;
+  background: rgb(2, 39, 114);
   display: flex;
   flex-wrap: wrap;
 }
 .form-register .image {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 45%;
+  max-width: 470px;
 }
 .form-register .image img {
-  width: 50%;
-  margin: 0.5em auto;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  width: 60%;
+  height: 100%;
+  margin: 0.1em auto;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px 0 rgb(242, 192, 99);
 }
 .form-register .input-fields {
   flex: 40%;
@@ -394,7 +398,7 @@ h3 {
   background: transparent;
   width: 80%;
   border: none;
-  border-bottom: 2px solid rgb(2, 39, 114);
+  border-bottom: 2px solid rgb(242, 192, 99);
   padding: 1em;
   color: #F2F2F2;
 }
@@ -402,17 +406,19 @@ h3 {
 .btnForm {
   list-style: none;
   border: none;
-  background: rgb(242, 94, 121);
+  background: rgb(242, 192, 99);
   padding: 0.7em 1.5em;
   border-radius: 50px;
   cursor: pointer;
-  color: #F2F2F2;
+  color: rgb(2, 39, 114);
   text-align: center;
+  font-weight: 700;
   height: 100%;
 }
 .btnForm:hover {
-  background: rgb(4, 198, 242);
+  background: rgb(242, 94, 121);
   box-shadow: 0 2px 10px 0 rgb(2, 39, 114);
+  color: #F2F2F2;
 }
 
 ::-webkit-input-placeholder {
