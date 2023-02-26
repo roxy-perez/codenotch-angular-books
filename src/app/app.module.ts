@@ -10,6 +10,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
+import { FilterPipe } from './shared/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BooksComponent } from './pages/books/books.component';
     RegisterFormComponent,
     RegisterComponent,
     ProfileComponent,
-    BooksComponent
+    BooksComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -1,72 +1,67 @@
+<section>
+
+  <div class="row-search">
+      <button type="button" class="btn" (click)="openPopup()">Añadir libro</button>
+      <form>
+        <div class="form-group" style="margin: 2em 1em;">
+          <input type="text" name="idBookRequested" value="" placeholder="Buscar libro" id="idBookRequested" [(ngModel)]="idBookRequested">
+          <div *ngIf="outputBooks.length === 0">
+            <h2 class="c-card__title">No hay libros que mostrar</h2>
+          </div>
+        </div>
+        <button type="button" class="btn" (click)="searchBooks()">Buscar</button>
+      </form>
+  </div>
+
+  <form id="myModal" #myModal="ngForm" (ngSubmit)="onSave(myModal.value)" class="modal-content"
+    [ngStyle]="{'display':displayStyle}">
+
+    <!-- Modal content -->
+    <div class="modal-header">
+      <button type="button" class="btn close" (click)="closePopup(); myModal.reset()">
+        X
+      </button>
+      <h3>Añadir libro a la biblioteca</h3>
+    </div>
+
+    <div class="modal-body">
+      <input type="text" name="title" placeholder="Título" ngModel required>
+      <input type="text" name="cover" placeholder="Tipo de tapa: blanda/dura" ngModel required>
+      <input type="text" name="author" placeholder="Autor" ngModel required>
+      <input type="text" name="price" placeholder="Precio" ngModel required>
+      <input type="text" name="photo" placeholder="Foto" ngModel required>
+      <input type="text" name="idBook" placeholder="Código libro" ngModel required>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn save">Guardar</button>
+    </div>
+
+  </form>
+</section>
+
 <section class="card-container">
 
-  <article class="c-card c-card--center">
+  <article class="c-card c-card--center" *ngFor="let book of outputBooks">
     <header class="c-card__header">
-      <img src="https://via.placeholder.com/350x200" class="c-card__image" alt="Card Image" />
+      <img src="https://via.placeholder.com/350x200" class="c-card__image" alt="Card Image" (click)="deleteBook(book.idBook)"/>
     </header>
 
     <div class="c-card__body">
       <h2 class="c-card__title">
-        El Hombre en busca de sentido
+        {{ book.title }}
       </h2>
       <p class="c-card__subtitle">
-        Viktor Frankl
+        {{ book.author }}
       </p>
+      <p class="c-card__intro">Ref-{{ book.idBook }}</p>
       <p class="c-card__intro">
-        12,25€
+        {{ book.price }}€
       </p>
     </div>
 
     <div class="c-card__footer">
-      <p>Tapa blanda</p>
-      <img src="../../../assets/img/El-hombre-en-busca-de-sentido.jpg">
-    </div>
-  </article>
-
-  <article class="c-card c-card--center">
-    <header class="c-card__header">
-      <img src="https://via.placeholder.com/350x200" class="c-card__image" alt="Card Image" />
-    </header>
-
-    <div class="c-card__body">
-      <h2 class="c-card__title">
-        El Coronel no tiene quien le escriba
-      </h2>
-      <p class="c-card__subtitle">
-        Gabriel García Márquez
-      </p>
-      <p class="c-card__intro">
-        15,10€
-      </p>
-    </div>
-
-    <div class="c-card__footer">
-      <p>Tapa dura</p>
-      <img src="../../../assets/img/coronel.jpg">
-    </div>
-  </article>
-
-
-  <article class="c-card c-card--center">
-    <header class="c-card__header">
-      <img src="https://via.placeholder.com/350x200" class="c-card__image" alt="Card Image" />
-    </header>
-
-    <div class="c-card__body">
-      <h2 class="c-card__title">
-        Por si las voces vuelven
-      </h2>
-      <p class="c-card__subtitle">
-        Ángel Martín
-      </p>
-      <p class="c-card__intro">
-        17,00€
-      </p>
-    </div>
-
-    <div class="c-card__footer">
-      <p>Tapa blanda</p>
-      <img src="../../../assets/img/porsilasvoces.jpeg">
+      <p>{{ book.cover }}</p>
+      <img src="{{ book.photo }}">
     </div>
   </article>
 
