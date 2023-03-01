@@ -1,16 +1,18 @@
 <div class="wrapper">
   <h3>Registro</h3>
-  <form class="form-register">
+  <form class="form-register" id="regForm" #regForm="ngForm">
     <div class="input-fields">
-      <input type="text" name="name" id="name" placeholder="Name">
-      <input type="email" name="email" id="email" placeholder="Email">
-      <input type="password" name="password" id="password" placeholder="Password">
+      <input type="text" name="name" id="name" placeholder="Name" ngModel required="">
+      <input type="text" name="surname" id="surname" placeholder="Surname" ngModel required="">
+      <input type="email" name="email" id="email" placeholder="Email" ngModel required>
+      <input type="text" name="url" placeholder="URL Foto" ngModel>
     </div>
     <div class="image">
-      <img src="../../../assets/img/AvatarMaker.png">
+      <img src="../../../assets/img/blank_user.png">
+      <!-- <img src="{{ user.url }}"> -->
     </div>
   </form>
   <div>
-    <button type="button" class="btnForm">Registro</button>
+    <button type="submit" (click)="signUp(regForm.value); regForm.reset();" class="btnForm">Registrarse</button>
   </div>
 </div>

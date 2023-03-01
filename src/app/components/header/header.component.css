@@ -315,7 +315,7 @@ template {
 
 body {
   color: #F2F2F2;
-  font-family: Sanchez, Georgia, "Times New Roman", serif;
+  font-family: "Sanchez", Georgia, "Times New Roman", serif;
   font-size: 0.875rem;
   line-height: 1.6;
   background: rgb(2, 39, 114);
@@ -360,18 +360,21 @@ ul li a {
   background-color: rgb(2, 39, 114);
   color: #F2F2F2;
   border-radius: 50px;
-  padding: 1rem 2rem;
+  margin: 1em 0.2em;
+  padding: 0.7em 1.5em;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-around;
   font-weight: 700;
+  height: 1em;
 }
 ul li a:hover {
   background-color: rgb(242, 192, 99);
   color: rgb(2, 39, 114);
   border-radius: 50px;
-  padding: 1rem 2rem;
+  margin: 1em 0.2em;
+  padding: 0.7em 1.5em;
   text-align: center;
   display: flex;
   align-items: center;
