@@ -22,6 +22,7 @@ export class BooksService {
   }
 
   public delete(idBook: number): boolean {
+    console.log("He llegado al servicio DELETE");
     const index = this.books.findIndex((book) => book.idBook === idBook);
     if (index >= 0) {
       this.books.splice(index, 1);

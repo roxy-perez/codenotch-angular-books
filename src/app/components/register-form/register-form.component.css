@@ -315,7 +315,7 @@ template {
 
 body {
   color: #F2F2F2;
-  font-family: Sanchez, Georgia, "Times New Roman", serif;
+  font-family: "Sanchez", Georgia, "Times New Roman", serif;
   font-size: 0.875rem;
   line-height: 1.6;
   background: rgb(2, 39, 114);
@@ -361,11 +361,10 @@ h3 {
 .wrapper {
   margin: 1em auto;
   padding: 1em 2em;
-  height: 20em;
   background: rgb(2, 39, 114);
   border-radius: 12px;
   box-shadow: 0 0 10px rgb(242, 192, 99);
-  width: 60%;
+  width: 70%;
   display: block;
 }
 
@@ -407,6 +406,7 @@ h3 {
   list-style: none;
   border: none;
   background: rgb(242, 192, 99);
+  margin: 1em auto;
   padding: 0.7em 1.5em;
   border-radius: 50px;
   cursor: pointer;
