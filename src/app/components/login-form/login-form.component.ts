@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from "../../shared/user.service";
-import { User } from "../../models/user";
+import { User } from '../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -8,15 +9,20 @@ import { User } from "../../models/user";
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent {
+  user: User;
 
-  constructor(public userService: UserService) {}
+  constructor(public userService: UserService, private router: Router) {}
 
-  signIn(user: User) {
-    this.userService.login(user).subscribe((res) =>{
+  signIn(user) {
+    console.log(user);
+     this.userService.login(user);
+    if (user) {
       this.userService.logged = true;
-      console.log(res);
-      //this.userService.user = res;
-    });
+      this.userService.user = user;
+      this.router.navigate(['/books']);
+    } else {
+      console.log('Credenciales incorrectas');
+    }
   }
 
 }
