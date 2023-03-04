@@ -356,26 +356,29 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 50%;
+  width: 60%;
+  margin: 1em auto;
   padding: 1em 2em;
   background: rgb(2, 39, 114);
   border-radius: 12px;
   box-shadow: 0 0 10px rgb(242, 192, 99);
+  font-size: 1.1rem;
+  font-family: serif;
+  font-weight: 400;
 }
 .wrapper .email {
-  margin: 1em auto;
+  margin: 1em 0.5em;
   padding: 0.5em 0.2em;
 }
 
 .frmLogin {
-  margin: 0 auto;
   background: rgb(2, 39, 114);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .frmLogin .input-fields {
   height: 10px;
-  margin: 1.5em auto;
+  margin: 1.5em 1.5em;
   padding: 0.5em 0.2em;
 }
 .frmLogin .input-fields input {
@@ -384,6 +387,8 @@ h2 {
   border: none;
   border-bottom: 2px solid rgb(242, 192, 99);
   color: #F2F2F2;
+  outline: none;
+  border: none;
 }
 
 .btn {
@@ -399,6 +404,7 @@ h2 {
   font-weight: 700;
   margin: 1em 1em;
   cursor: pointer;
+  max-width: 50%;
 }
 .btn:hover {
   background-color: rgb(242, 94, 121);
