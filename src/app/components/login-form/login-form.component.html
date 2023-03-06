@@ -1,6 +1,6 @@
 <div class="wrapper">
   <form id="frmLogin" class="frmLogin" #frmLogin="ngForm">
-    <label for="email">Correo electrónico:</label>
+    <label class="email" for="email">Correo electrónico:</label>
     <input class="input-fields" type="email" id="email" name="email" ngModel required>
     <button class="btn" type="submit" (click)="signIn(frmLogin.value)">Iniciar sesión</button>
   </form>

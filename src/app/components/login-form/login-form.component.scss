@@ -1,40 +1,56 @@
 @import '../../../sass/styles';
 
 .wrapper {
+  @include flexCenter(row);
+  width: 60%;
   margin: 1em auto;
   padding: 1em 2em;
   background: $secondary-color;
   border-radius: 12px;
   box-shadow: 0 0 10px $accent-alternative;
-  width: 70%;
-  display: block;
+  font-size: 1.1rem;
+  font-family: serif;
+  font-weight: weight(regular);
+
+  .email {
+    margin: 1em .5em;
+    padding: .5em .2em;
+  }
+
 }
 
 .frmLogin {
-  margin: 0 auto;
   background: $secondary-color;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 
   .input-fields {
-    flex: 40%;
-    margin-right: 5%;
+    height: 10px;
+    margin: 1.5em 1.5em;
+    padding: .5em .2em;
 
     input {
       background: transparent;
       width: 80%;
       border: none;
       border-bottom: 2px solid $accent-alternative;
-      padding: 1em;
       color: $text-color;
+      outline: none;
+      border: none;
     }
   }
 
 }
 
 .btn {
-  @include btn($background-color: $secondary-color,
-    $color: $text-color,
-    $bold: 'true');
-  height: 1em;
+  @include btn($accent-alternative, $tertiary-color, 'true');
+  margin: 1em 1em;
+  cursor: pointer;
+  max-width: 50%;
+
+  &:hover {
+    background-color: $accent-color;
+    box-shadow: $box-shadow;
+    color: $text-color;
+  }
 }

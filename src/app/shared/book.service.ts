@@ -1,34 +1,30 @@
 import { Injectable } from "@angular/core";
 import { Book } from "../models/book";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
+
 export class BooksService {
-  private books: Book[] = [];
+  private baseUrl = "http://localhost:3001/book/v1/books";
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  public getAll(): Book[] {
-    return this.books;
+  public getAll(user_id: number): Observable<Object> {
+    return this.http.get(`${this.baseUrl}/${user_id}`);
   }
 
-  public getOne(idBook: number) {
-    return this.books.find((book) => book.idBook === idBook);
+  public getOne(user_id: number, book_id: number): Observable<Object> {
+    return this.http.get(`${this.baseUrl}/${book_id}?user_id=${user_id}`);
   }
 
-  public add(book: Book) {
-    this.books.push(book);
+  public add(book: Book):Observable<Object>  {
+    return this.http.post(`${this.baseUrl}`, book);
   }
 
-  public delete(idBook: number): boolean {
-    console.log("He llegado al servicio DELETE");
-    const index = this.books.findIndex((book) => book.idBook === idBook);
-    if (index >= 0) {
-      this.books.splice(index, 1);
-      return true;
-    } else {
-      return false;
-    }
+  public delete(book_id: number): Observable<Object> {
+    return this.http.delete(`${this.baseUrl}?book_id=${book_id}`);
   }
 }

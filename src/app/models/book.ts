@@ -1,11 +1,11 @@
 export class Book {
   constructor(
-    public idBook: number,
-    public id_user: number,
+    public book_id: number,
+    public user_id: number,
     public title: string,
     public author: string,
     public price: number,
-    public photo: string,
-    public cover: string
+    public cover: string,
+    public photo: string
   ) {}
 }
