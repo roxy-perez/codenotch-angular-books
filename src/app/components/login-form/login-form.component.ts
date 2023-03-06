@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 })
 export class LoginFormComponent implements OnInit {
   user: User;
+  loggedUser: any;
 
   constructor(public userService: UserService, private router: Router) {}
 
@@ -22,10 +23,10 @@ export class LoginFormComponent implements OnInit {
       if (!userData) {
         console.log('El correo ingresado no coincide con ningún usuario');
       } else {
-        console.log(userData);
+        this.loggedUser = {...userData};
+        console.log("usuario logueado", this.loggedUser);
         this.userService.logged = true;
 
-        console.log(`Bienvenido, ${userData}!`);
         this.router.navigateByUrl('/books');
       }
     });

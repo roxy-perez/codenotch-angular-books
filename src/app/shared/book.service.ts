@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
 })
 
 export class BooksService {
-  private baseUrl = "http://localhost:3001/books";
+  private baseUrl = "http://localhost:3001/book/v1/books";
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +20,7 @@ export class BooksService {
     return this.http.get(`${this.baseUrl}/${book_id}?user_id=${user_id}`);
   }
 
-  public add(book: Book) {
+  public add(book: Book):Observable<Object>  {
     return this.http.post(`${this.baseUrl}`, book);
   }
 

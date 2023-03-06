@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/user";
 
@@ -17,6 +17,7 @@ export class UserService {
   }
 
   login(user: User) {
+    this.user = user;
     return this.http.post(`${this.url}/login`, user);
   }
 }

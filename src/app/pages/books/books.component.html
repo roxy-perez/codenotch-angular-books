@@ -1,16 +1,17 @@
 <section>
 
   <div class="row-search">
-      <button type="button" class="btn" (click)="openPopup()">Añadir libro</button>
-      <form>
-        <div class="form-group" style="margin: 2em 1em;">
-          <input type="text" name="idBookRequested" value="" placeholder="Buscar libro" id="idBookRequested" [(ngModel)]="idBookRequested">
-          <div *ngIf="outputBooks.length === 0">
-            <h2 class="c-card__title">No hay libros que mostrar</h2>
-          </div>
+    <button type="button" class="btn" (click)="openPopup()">Añadir libro</button>
+    <!--  <form>
+      <div class="form-group" style="margin: 2em 1em;">
+        <input type="text" name="idBookRequested" value="" placeholder="Buscar libro" id="idBookRequested"
+          [(ngModel)]="idBookRequested">
+        <div *ngIf="outputBooks.length === 0">
+          <h2 class="c-card__title">No hay libros que mostrar</h2>
         </div>
-        <button type="button" class="btn" (click)="searchBooks()">Buscar</button>
-      </form>
+      </div>
+      <button type="button" class="btn" (click)="searchBooks()">Buscar</button>
+    </form> -->
   </div>
 
   <form id="myModal" #myModal="ngForm" (ngSubmit)="onSave(myModal.value)" class="modal-content"
@@ -41,28 +42,31 @@
 
 <section class="card-container">
 
-  <article class="c-card c-card--center" *ngFor="let book of outputBooks">
-    <header class="c-card__header">
-      <img src="https://via.placeholder.com/350x200" class="c-card__image" alt="Card Image" (click)="deleteBook(book.idBook)"/>
-    </header>
+  <article class="c-card c-card--center" *ngFor="let book of books">
+    <article class="c-card c-card--center">
+      <header class="c-card__header">
+        <img src="https://via.placeholder.com/350x200" class="c-card__image" alt="Card Image"
+          (click)="deleteBook(book.book_id)" />
+      </header>
 
-    <div class="c-card__body">
-      <h2 class="c-card__title">
-        {{ book.title }}
-      </h2>
-      <p class="c-card__subtitle">
-        {{ book.author }}
-      </p>
-      <p class="c-card__intro">Ref-{{ book.idBook }}</p>
-      <p class="c-card__intro">
-        {{ book.price }}€
-      </p>
-    </div>
+      <div class="c-card__body">
+        <h2 class="c-card__title">
+          {{ book.title }}
+        </h2>
+        <p class="c-card__subtitle">
+          {{ book.author }}
+        </p>
+        <p class="c-card__intro">Ref-{{ book.book_id }}</p>
+        <p class="c-card__intro">
+          {{ book.price }}€
+        </p>
+      </div>
 
-    <div class="c-card__footer">
-      <p>{{ book.cover }}</p>
-      <img src="{{ book.photo }}">
-    </div>
+      <div class="c-card__footer">
+        <p>{{ book.cover }}</p>
+        <img src="{{ book.cover }}">
+      </div>
+    </article>
   </article>
 
 </section>

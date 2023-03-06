@@ -5,6 +5,7 @@ export class Book {
     public title: string,
     public author: string,
     public price: number,
-    public cover: string
+    public cover: string,
+    public photo: string
   ) {}
 }
