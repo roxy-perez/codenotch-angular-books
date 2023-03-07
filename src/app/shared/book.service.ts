@@ -8,16 +8,18 @@ import { Observable } from "rxjs";
 })
 
 export class BooksService {
-  private baseUrl = "http://localhost:3001/book/v1/books";
+  private baseUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.baseUrl = "http://localhost:3001/book/v1/books";
+  }
 
   public getAll(user_id: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/${user_id}`);
+    return this.http.get(`${this.baseUrl}?user_id=${user_id}`);
   }
 
   public getOne(user_id: number, book_id: number): Observable<Object> {
-    return this.http.get(`${this.baseUrl}/${book_id}?user_id=${user_id}`);
+    return this.http.get(`${this.baseUrl}/${user_id}/${book_id}`);
   }
 
   public add(book: Book):Observable<Object>  {
