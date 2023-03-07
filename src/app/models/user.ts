@@ -8,7 +8,7 @@ export class User {
   ) {}
 
   // Getters
-  public get id() {
+  public get user_id() {
     return this._id;
   }
 
@@ -29,7 +29,7 @@ export class User {
   }
 
   // Setters
-  public set id(id: number) {
+  public set user_id(id: number) {
     this._id = id;
   }
 

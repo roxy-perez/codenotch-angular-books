@@ -8,27 +8,23 @@ import { Router } from "@angular/router";
   templateUrl: "./login-form.component.html",
   styleUrls: ["./login-form.component.scss"],
 })
-export class LoginFormComponent implements OnInit {
-  user: User;
-  loggedUser: any;
+export class LoginFormComponent {
+  public user: User;
 
   constructor(public userService: UserService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.user = this.userService.user;
-  }
-
-  signIn(user){
-    this.userService.login(user).subscribe(userData => {
-      if (!userData) {
-        console.log('El correo ingresado no coincide con ningún usuario');
-      } else {
-        this.loggedUser = {...userData};
-        console.log("usuario logueado", this.loggedUser);
-        this.userService.logged = true;
-
-        this.router.navigateByUrl('/books');
+  signIn(email: string): void {
+    this.userService.login(email).subscribe(
+      {
+        next: (response) => {
+          this.userService.logged = true;
+          console.log("respuesta login",response['body']);
+          this.userService.user = response['body'];
+          this.router.navigate(['/books']);
+        },
+        error: (error) => console.error('Error al iniciar sesión', error),
+        complete: () => console.info('Login completado')
       }
-    });
+    );
   }
 }
