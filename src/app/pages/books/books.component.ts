@@ -11,17 +11,16 @@ import { UserService } from "../../shared/user.service";
 export class BooksComponent {
   public books: Book[] = [];
   public book: Book;
-  public idBookRequested = null;
 
   constructor(
     public bookService: BooksService,
     public userService: UserService
   ) {}
 
-  searchBooks() {
-    if (this.idBookRequested === null) {
+  searchBooks(idBook: number) {
+    if (!idBook) {
       this.getBooks();
-    } else this.getOneBook(this.userService.user.user_id, this.idBookRequested);
+    } else this.getOneBook(this.userService.user.user_id, idBook);
   }
 
   getBooks(): void {
@@ -56,9 +55,9 @@ export class BooksComponent {
   }
 
   getOneBook(user_id: number, book_id: number) {
-    console.log(this.idBookRequested);
     this.bookService.getOne(user_id, book_id).subscribe({
       next: (searchedBook) => {
+        this.books=[];
         this.books[0] = searchedBook["body"];
         console.log(this.books[0]);
         if (this.books[0] === null) {
@@ -77,10 +76,9 @@ export class BooksComponent {
       this.bookService.delete(book_id).subscribe({
         next: () => alert(`Libro eliminado correctamente!`),
         error: (error) => console.log("Error al eliminar el libro", error),
-        complete: () =>  this.getBooks()
+        complete: () => this.getBooks(),
       });
     }
-
   }
 
   // Modal shows and hide

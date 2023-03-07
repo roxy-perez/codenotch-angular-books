@@ -4,13 +4,12 @@
     <button type="button" class="btn" (click)="openPopup()">Añadir libro</button>
     <form>
       <div class="form-group" style="margin: 2em 1em;">
-        <input type="text" name="idBookRequested" value="" placeholder="Buscar libro" id="idBookRequested"
-          [(ngModel)]="idBookRequested">
+        <input #idBookRequested type="number" name="idBookRequested" value="" placeholder="Buscar libro" id="idBookRequested">
         <div *ngIf="books.length === 0">
           <h2 class="c-card__title">No hay libros que mostrar</h2>
         </div>
       </div>
-      <button type="button" class="btn" (click)="searchBooks()">Buscar</button>
+      <button type="button" class="btn" (click)="searchBooks(idBookRequested.valueAsNumber)">Buscar</button>
     </form>
   </div>
 
