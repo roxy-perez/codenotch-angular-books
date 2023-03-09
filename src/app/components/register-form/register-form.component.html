@@ -1,11 +1,11 @@
 <div class="wrapper">
   <h3>Registro</h3>
-  <form class="form-register" id="regForm" #regForm="ngForm">
+  <form class="form-register" id="regForm" [formGroup]="regForm" (ngSubmit)="signUp()">
     <div class="input-fields">
-      <input type="text" name="name" id="name" placeholder="Name" ngModel required="">
-      <input type="text" name="surname" id="surname" placeholder="Surname" ngModel required="">
-      <input type="email" name="email" id="email" placeholder="Email" ngModel required>
-      <input type="text" name="url" placeholder="URL Foto" ngModel>
+      <input type="text" name="name" id="name" placeholder="Nombre" formControlName="name">
+      <input type="text" name="surname" id="surname" placeholder="Apellidos" formControlName="surname">
+      <input type="email" name="email" id="email" placeholder="Email" formControlName="email">
+      <input type="text" name="url" placeholder="URL Foto" formControlName="url">
     </div>
     <div class="image">
       <img src="../../../assets/img/blank_user.png">
@@ -13,6 +13,6 @@
     </div>
   </form>
   <div>
-    <button type="submit" (click)="signUp(regForm.value); regForm.reset();" class="btnForm">Registrarse</button>
+    <button type="submit" [disabled]="!regForm.valid" class="btnForm">Registrarse</button>
   </div>
 </div>

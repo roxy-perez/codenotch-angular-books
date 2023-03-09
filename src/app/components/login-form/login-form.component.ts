@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { UserService } from "../../shared/user.service";
 import { User } from "../../models/user";
 import { Router } from "@angular/router";
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-login-form",
@@ -11,20 +12,26 @@ import { Router } from "@angular/router";
 export class LoginFormComponent {
   public user: User;
 
-  constructor(public userService: UserService, private router: Router) {}
+  constructor(
+    public userService: UserService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
 
-  signIn(email: string): void {
-    this.userService.login(email).subscribe(
-      {
-        next: (response) => {
-          this.userService.logged = true;
-          console.log("respuesta login",response['body']);
-          this.userService.user = response['body'];
-          this.router.navigate(['/books']);
-        },
-        error: (error) => console.error('Error al iniciar sesión', error),
-        complete: () => console.info('Login completado')
-      }
-    );
+  frmLogin = this.fb.group({
+    email: ["", [Validators.required, Validators.email]],
+  });
+
+  signIn(): void {
+    const email: string = this.frmLogin.controls["email"].value;
+    this.userService.login(email).subscribe({
+      next: (response) => {
+        console.log("respuesta login", response["body"]);
+        this.userService.logged = true;
+        this.userService.user = response["body"];
+      },
+      error: (error) => console.error("Error al iniciar sesión", error),
+      complete: () => this.router.navigate(["/books"]),
+    });
   }
 }

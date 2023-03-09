@@ -411,4 +411,9 @@ h2 {
   box-shadow: 0 2px 10px 0 rgb(2, 39, 114);
   color: #F2F2F2;
 }
+.btn:disabled {
+  background-color: rgb(3, 89, 165);
+  box-shadow: 0 2px 10px 0 rgb(2, 39, 114);
+  color: gray;
+}
 /*# sourceMappingURL=login-form.component.css.map */

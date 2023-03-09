@@ -29,9 +29,9 @@ export class User {
   }
 
   // Setters
-  public set user_id(id: number) {
+/*   public set user_id(id: number) {
     this._id = id;
-  }
+  } */
 
   public set name(name: string) {
     this._name = name;
