@@ -7,24 +7,19 @@ import { Observable } from "rxjs";
   providedIn: "root",
 })
 export class UserService {
-  private url: string;
-  public logged: boolean = false;
+  private url: string = 'http://localhost:3001/user/v1';
+  public logged: boolean;
   public user: User;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.logged = false;
+  }
 
   register(user: User): Observable<Object> {
-    const headers = { "content-type": "application/json" };
-    return this.http.post("http://localhost:3001/user/v1/users", user, {
-      headers: headers,
-    });
+    return this.http.post(`${this.url}/users`, user);
   }
 
   login(email: string): Observable<Object> {
-    const headers = { "content-type": "application/json" };
-    const body = JSON.stringify(email);
-    return this.http.post("http://localhost:3001/user/v1/login", body, {
-      headers: headers,
-    });
+    return this.http.post(`${this.url}/login`, { email });
   }
 }

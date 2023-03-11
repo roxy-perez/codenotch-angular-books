@@ -1,7 +1,12 @@
 <div class="wrapper">
-  <form id="frmLogin" [formGroup]="frmLogin" (ngSubmit)="signIn()" class="frmLogin">
+  <form [formGroup]="frmLogin" (ngSubmit)="signIn()" class="frmLogin">
     <label class="email" for="email">Correo electrónico:</label>
-    <input class="input-fields" type="email" id="email" name="email" formControlName="email">
+    <input class="input-fields" type="email" name="email" formControlName="email">
+    <div *ngIf="frmLogin.get('email').hasError('required') || frmLogin.controls['email'].invalid" class="alert">
+      Campo requerido. <br>
+      Email no válido.
+    </div>
     <button class="btn" type="submit" [disabled]="!frmLogin.valid">Iniciar sesión</button>
+
   </form>
 </div>

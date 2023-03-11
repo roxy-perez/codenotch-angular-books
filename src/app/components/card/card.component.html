@@ -1,0 +1,26 @@
+<article class="c-card c-card--center">
+  <header class="c-card__header">
+    <img src="https://via.placeholder.com/350x200" class="c-card__image" alt="Card Image"
+      (click)="deleteBook(book.book_id)" />
+  </header>
+
+  <div class="c-card__body">
+    <h2 class="c-card__title">
+      {{ book.title }}
+    </h2>
+    <p class="c-card__subtitle">
+      {{ book.author }}
+    </p>
+    <p class="c-card__intro">Ref-{{ book.book_id }}</p>
+    <p class="c-card__intro">
+      {{ book.price }}€
+    </p>
+    <p class="c-card__intro">
+      {{ book.cover }}
+    </p>
+  </div>
+
+  <div class="c-card__footer">
+    <img [src]="book.photo">
+  </div>
+</article>

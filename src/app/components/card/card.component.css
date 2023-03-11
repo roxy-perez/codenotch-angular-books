@@ -351,74 +351,218 @@ h2 {
   box-shadow: 0 0 5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.wrapper {
+.row-search {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 60%;
-  margin: 1em auto;
-  padding: 1em 2em;
-  background: rgb(2, 39, 114);
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgb(242, 192, 99);
-  font-size: 1.1rem;
-  font-family: serif;
-  font-weight: 400;
+  flex-wrap: wrap;
 }
-.wrapper .email {
-  margin: 1em 0.5em;
-  padding: 0.5em 0.2em;
-}
-
-.frmLogin {
-  background: rgb(2, 39, 114);
+.row-search form {
   display: flex;
-  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
-.frmLogin .input-fields {
-  height: 10px;
-  margin: 1.5em 1.5em;
-  padding: 0.5em 0.2em;
-}
-.frmLogin .input-fields input {
-  background: transparent;
+.row-search input {
+  height: 30px;
   width: 80%;
-  border: none;
-  border-bottom: 2px solid rgb(242, 192, 99);
-  color: #F2F2F2;
+  max-width: 470px;
   outline: none;
   border: none;
+  padding: 0 15px;
+  font-size: 16px;
+  font-family: "League Gothic", Helvetica, Verdana, sans-serif;
+  font-weight: 400;
+  text-align: left;
+  color: rgb(2, 39, 114);
+  border-radius: 8px;
+  background: #F2F2F2;
 }
 
-.alert {
-  color: red;
-  margin: 1em auto;
+.c-card * {
+  display: block;
+  box-sizing: border-box;
+}
+
+.card-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  align-items: stretch;
+  flex-flow: wrap;
+}
+
+.c-card {
+  width: 100%;
+  max-width: 300px;
+  max-height: 530px;
+  margin: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  background: rgb(3, 89, 165);
+  box-shadow: 0 2px 10px 0 rgb(2, 39, 114);
+  border-radius: 14px;
+}
+.c-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 20px -15px rgba(0, 0, 0, 0.3);
+}
+.c-card__image {
+  max-width: 100%;
+}
+.c-card__body {
+  padding: 1em;
+}
+.c-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: black;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+.c-card__subtitle {
+  font-size: 1.4rem;
+  margin-top: 1em;
+  padding: 0;
+  color: rgb(242, 192, 99);
+}
+.c-card__intro {
+  margin-bottom: 0;
+  font-weight: 700;
+}
+.c-card__footer {
+  padding: 1.5em;
+  border-top: 1px solid #F2F2F2;
+}
+.c-card__footer img {
+  width: 40%;
+  height: 45%;
+  margin: 0 auto;
+}
+.c-card--center {
+  text-align: center;
 }
 
 .btn {
-  background-color: rgb(242, 192, 99);
-  color: rgb(3, 89, 165);
+  background-color: rgb(242, 94, 121);
+  color: #F2F2F2;
   border-radius: 50px;
-  margin: 1em 0.2em;
-  padding: 0.7em 1.5em;
+  width: 150px;
+  height: 50px;
+  margin: 2em 2em;
+  padding: 0.2em 0.2em;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-around;
   font-weight: 700;
-  margin: 1em 1em;
-  cursor: pointer;
-  max-width: 50%;
+  border: none;
 }
 .btn:hover {
-  background-color: rgb(242, 94, 121);
+  background-color: rgb(242, 192, 99);
+  color: rgb(2, 39, 114);
+  border-radius: 50px;
+  width: 150px;
+  height: 50px;
+  margin: 2em 2em;
+  padding: 0.2em 0.2em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 700;
+  border: none;
   box-shadow: 0 2px 10px 0 rgb(2, 39, 114);
-  color: #F2F2F2;
 }
-.btn:disabled {
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #F2F2F2;
+  margin: auto;
+  padding: 0;
+  border: 1px solid rgb(3, 89, 165);
+  max-width: 500px;
+  box-shadow: 0 2px 10px 0 rgb(2, 39, 114);
+  -webkit-animation-name: animatetop;
+          animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
+  align-items: center;
+  /* Modal Header */
+  /* Modal Body */
+  /* Modal Footer */
+  /* Add Animation */
+  /* The Close Button */
+}
+.modal-content .modal-header {
+  padding: 2px 16px;
   background-color: rgb(3, 89, 165);
-  box-shadow: 0 2px 10px 0 rgb(2, 39, 114);
-  color: gray;
+  color: #F2F2F2;
+  font-size: 1em;
+  font-family: "IBM Plex Mono", Courier, mono;
 }
-/*# sourceMappingURL=login-form.component.css.map */
+.modal-content .modal-body {
+  padding: 2px 16px;
+  flex: 40%;
+}
+.modal-content .modal-body input {
+  background: transparent;
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid rgb(242, 192, 99);
+  padding: 1em;
+  color: rgb(2, 39, 114);
+  font-family: "League Gothic", Helvetica, Verdana, sans-serif;
+}
+.modal-content .modal-footer {
+  padding: 2px 16px;
+  background-color: rgb(4, 198, 242);
+  color: #F2F2F2;
+  text-align: center;
+  font-weight: 400;
+  font-family: "IBM Plex Mono", Courier, mono;
+}
+.modal-content .modal-footer .btn.save {
+  display: inline-flex;
+}
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+.modal-content .btn.close {
+  float: right;
+  font-size: 1em;
+  font-family: "IBM Plex Mono", Courier, mono;
+  width: 1em;
+  padding: 0.3em 1em;
+  border-radius: 50px;
+  margin: 1em auto;
+}
+.modal-content .btn.close:hover, .modal-content .btn.close:focus {
+  color: rgb(3, 89, 165);
+  text-decoration: none;
+  cursor: pointer;
+}
+/*# sourceMappingURL=card.component.css.map */

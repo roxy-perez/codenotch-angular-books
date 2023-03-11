@@ -3,6 +3,7 @@ import { UserService } from "../../shared/user.service";
 import { User } from "../../models/user";
 import { Router } from "@angular/router";
 import { FormBuilder, Validators } from "@angular/forms";
+import { ApiResponse } from "src/app/models/api-response";
 
 @Component({
   selector: "app-login-form",
@@ -10,12 +11,10 @@ import { FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./login-form.component.scss"],
 })
 export class LoginFormComponent {
-  public user: User;
+  email: string;
 
   constructor(
-    public userService: UserService,
-    private router: Router,
-    private fb: FormBuilder
+    public userService: UserService, private router: Router, private fb: FormBuilder
   ) {}
 
   frmLogin = this.fb.group({
@@ -23,12 +22,16 @@ export class LoginFormComponent {
   });
 
   signIn(): void {
-    const email: string = this.frmLogin.controls["email"].value;
-    this.userService.login(email).subscribe({
-      next: (response) => {
-        console.log("respuesta login", response["body"]);
-        this.userService.logged = true;
-        this.userService.user = response["body"];
+    this.email = this.frmLogin.controls["email"].value;
+    this.userService.login(this.email).subscribe({
+      next: ( response: { user: User } | ApiResponse) => {
+        console.log("response", response);
+        if ('user' in response) {
+          this.userService.logged = true;
+          this.userService.user = response.user;
+        } else {
+          console.log(response.status, response.message);
+        }
       },
       error: (error) => console.error("Error al iniciar sesión", error),
       complete: () => this.router.navigate(["/books"]),

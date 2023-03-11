@@ -42,6 +42,11 @@
 
 }
 
+.alert{
+  color: red;
+  margin: 1em auto;
+}
+
 .btn {
   @include btn($accent-alternative, $tertiary-color, 'true');
   margin: 1em 1em;
