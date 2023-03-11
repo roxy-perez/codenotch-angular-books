@@ -1,18 +1,31 @@
 <div class="wrapper">
   <h3>Registro</h3>
-  <form class="form-register" id="regForm" #regForm="ngForm">
+  <form class="form-register" [formGroup]="regForm" (ngSubmit)="signUp()" novalidate>
     <div class="input-fields">
-      <input type="text" name="name" id="name" placeholder="Name" ngModel required="">
-      <input type="text" name="surname" id="surname" placeholder="Surname" ngModel required="">
-      <input type="email" name="email" id="email" placeholder="Email" ngModel required>
-      <input type="text" name="url" placeholder="URL Foto" ngModel>
+      <input type="text" name="name" placeholder="Nombre" formControlName="name">
+      <div *ngIf="regForm.get('name').hasError('required') || regForm.get('name').hasError('minlength')" class="alert">
+        Campo requerido <br>
+        Este campo debería tener una longitud mínima de 3 caracteres.
+      </div>
+      <input type="text" name="surname" placeholder="Apellidos" formControlName="surname">
+      <div *ngIf="regForm.get('surname').hasError('required') || regForm.get('surname').hasError('minlength')" class="alert">Campo requerido</div>
+      <input type="email" name="email" placeholder="Email" formControlName="email">
+      <div *ngIf="regForm.get('email').hasError('required') || regForm.controls['email'].invalid" class="alert">
+        Campo requerido <br>
+        Email no válido.
+      </div>
+      <input type="text" name="url" placeholder="URL Foto" formControlName="url">
+      <div *ngIf="regForm.controls['url'].invalid && (regForm.controls['url'].dirty || regForm.controls['url'].touched)" class="alert">
+        Campo requerido <br>
+        Este campo debe tener una longitud mínima de 5 caracteres.
+      </div>
     </div>
     <div class="image">
-      <img src="../../../assets/img/blank_user.png">
-      <!-- <img src="{{ user.url }}"> -->
+      <img *ngIf="!regForm.controls.url.value" src="../../../assets/img/blank_user.png">
+      <img *ngIf="regForm.controls.url.value" src="{{ regForm.controls.url.value }}">
     </div>
+    <button type="submit" [disabled]="regForm.invalid" class="btnForm">Registrarse</button>
+
+
   </form>
-  <div>
-    <button type="submit" (click)="signUp(regForm.value); regForm.reset();" class="btnForm">Registrarse</button>
-  </div>
 </div>

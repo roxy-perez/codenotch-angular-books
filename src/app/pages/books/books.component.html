@@ -4,7 +4,8 @@
     <button type="button" class="btn" (click)="openPopup()">Añadir libro</button>
     <form>
       <div class="form-group" style="margin: 2em 1em;">
-        <input #idBookRequested type="number" name="idBookRequested" value="" placeholder="Buscar libro" id="idBookRequested">
+        <input #idBookRequested type="number" name="idBookRequested" value="" placeholder="Buscar libro"
+          id="idBookRequested">
         <div *ngIf="books.length === 0">
           <h2 class="c-card__title">No hay libros que mostrar</h2>
         </div>
@@ -39,35 +40,6 @@
   </form>
 </section>
 
-<section class="card-container" [hidden]="books.length===null">
-
-  <article class="c-card c-card--center" *ngFor="let book of books">
-
-    <header class="c-card__header">
-      <img src="https://via.placeholder.com/350x200" class="c-card__image" alt="Card Image"
-        (click)="deleteBook(book.book_id)" />
-    </header>
-
-    <div class="c-card__body">
-      <h2 class="c-card__title">
-        {{ book.title }}
-      </h2>
-      <p class="c-card__subtitle">
-        {{ book.author }}
-      </p>
-      <p class="c-card__intro">Ref-{{ book.book_id }}</p>
-      <p class="c-card__intro">
-        {{ book.price }}€
-      </p>
-      <p class="c-card__intro">
-        {{ book.cover }}
-      </p>
-    </div>
-
-    <div class="c-card__footer">
-      <img src="{{ book.photo }}">
-    </div>
-
-  </article>
-
+<section class="card-container" [hidden]="books.length > 0">
+  <app-card *ngFor="let book of books" [book]="book" (deleteBookEvent)="deleteBook($event)"></app-card>
 </section>

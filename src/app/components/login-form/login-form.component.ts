@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { UserService } from "../../shared/user.service";
 import { User } from "../../models/user";
 import { Router } from "@angular/router";
+import { FormBuilder, Validators } from "@angular/forms";
+import { ApiResponse } from "src/app/models/api-response";
 
 @Component({
   selector: "app-login-form",
@@ -9,22 +11,30 @@ import { Router } from "@angular/router";
   styleUrls: ["./login-form.component.scss"],
 })
 export class LoginFormComponent {
-  public user: User;
+  email: string;
 
-  constructor(public userService: UserService, private router: Router) {}
+  constructor(
+    public userService: UserService, private router: Router, private fb: FormBuilder
+  ) {}
 
-  signIn(email: string): void {
-    this.userService.login(email).subscribe(
-      {
-        next: (response) => {
+  frmLogin = this.fb.group({
+    email: ["", [Validators.required, Validators.email]],
+  });
+
+  signIn(): void {
+    this.email = this.frmLogin.controls["email"].value;
+    this.userService.login(this.email).subscribe({
+      next: ( response: { user: User } | ApiResponse) => {
+        console.log("response", response);
+        if ('user' in response) {
           this.userService.logged = true;
-          console.log("respuesta login",response['body']);
-          this.userService.user = response['body'];
-          this.router.navigate(['/books']);
-        },
-        error: (error) => console.error('Error al iniciar sesión', error),
-        complete: () => console.info('Login completado')
-      }
-    );
+          this.userService.user = response.user;
+        } else {
+          console.log(response.status, response.message);
+        }
+      },
+      error: (error) => console.error("Error al iniciar sesión", error),
+      complete: () => this.router.navigate(["/books"]),
+    });
   }
 }

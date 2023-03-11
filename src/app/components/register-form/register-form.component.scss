@@ -38,7 +38,8 @@ h3 {
   }
 
   .input-fields {
-    flex: 40%;
+    flex: 50%;
+    max-height: 420px;
     margin-right: 5%;
 
     input {
@@ -65,13 +66,23 @@ h3 {
   color: $secondary-color;
   text-align: center;
   font-weight: weight(bold);
-  height: 100%;
 
   &:hover {
     background: $accent-color;
     box-shadow: $box-shadow;
     color: $text-color;
   }
+
+  &:disabled {
+    background-color: $tertiary-color;
+    box-shadow: $box-shadow;
+    color: gray;
+  }
+}
+
+.alert{
+  color: red;
+  width: 70%;
 }
 
 ::-webkit-input-placeholder {

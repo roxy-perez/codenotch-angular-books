@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Book } from "src/app/models/book";
 import { BooksService } from "../../shared/book.service";
 import { UserService } from "../../shared/user.service";
@@ -11,23 +11,27 @@ import { UserService } from "../../shared/user.service";
 export class BooksComponent {
   public books: Book[] = [];
   public book: Book;
+  user_id: number;
 
   constructor(
-    public bookService: BooksService,
-    public userService: UserService
-  ) {}
+    public bookService: BooksService, public userService: UserService) {
+    this.user_id = this.userService.user[0]?.user_id || undefined;;
+    this.getBooks();
+  }
 
   searchBooks(idBook: number) {
+    this.user_id = this.userService.user[0].user_id;
     if (!idBook) {
       this.getBooks();
-    } else this.getOneBook(this.userService.user.user_id, idBook);
+    } else this.getOneBook(this.user_id, idBook);
   }
 
   getBooks(): void {
-    const user_id = this.userService.user.user_id;
-    this.bookService.getAll(user_id).subscribe({
-      next: (books) => {
-        this.books = books["body"];
+    this.bookService.getAll(this.user_id).subscribe({
+      next: (response: { books: Book[] }) => {
+        if ('books' in response) {
+          this.books = response.books;
+        }
       },
       error: (error) => {
         console.error(error);
@@ -39,26 +43,28 @@ export class BooksComponent {
   }
 
   onSave(book: Book) {
-    const user_id = this.userService.user.user_id;
-    book.user_id = user_id;
+    book.user_id = this.user_id;
     console.log(book);
     this.bookService.add(book).subscribe({
-      next: (resultBook) => {
-        console.log("Libro añadido: ", resultBook);
-        this.book = resultBook["body"];
+      next: (response: { book: Book }) => {
+        console.log("Libro añadido: ", response.book);
+        this.book = response.book;
       },
       error: (error) => console.error("Error al agregar el libro: ", error),
       complete: () => {
         alert(`Libro añadido correctamente!`);
+        this.getBooks();
       },
     });
   }
 
   getOneBook(user_id: number, book_id: number) {
+    console.log(user_id, book_id);
     this.bookService.getOne(user_id, book_id).subscribe({
-      next: (searchedBook) => {
-        this.books=[];
-        this.books[0] = searchedBook["body"];
+      next: (foundBook: { book: Book }) => {
+        console.log(foundBook);
+        this.books = [];
+        this.books[0] = foundBook.book;
         console.log(this.books[0]);
         if (this.books[0] === null) {
           alert(
@@ -74,7 +80,9 @@ export class BooksComponent {
     console.log(book_id);
     if (confirm("¿Estás seguro que deseas eliminar este libro?")) {
       this.bookService.delete(book_id).subscribe({
-        next: () => alert(`Libro eliminado correctamente!`),
+        next: () => {
+          alert(`Libro eliminado correctamente!`);
+        },
         error: (error) => console.log("Error al eliminar el libro", error),
         complete: () => this.getBooks(),
       });
